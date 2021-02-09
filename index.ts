@@ -6,4 +6,11 @@
 
 import { findMetaFunctionFile } from "./src/find-function-declaration-file";
 
-findMetaFunctionFile();
+const main = () : void => {
+  findMetaFunctionFile()
+    .then((result) => {
+      // Validate file content  
+    });
+}
+
+main();
