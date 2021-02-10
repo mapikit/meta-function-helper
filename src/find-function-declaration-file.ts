@@ -1,5 +1,6 @@
 import Path from "path";
 import FS from "fs";
+import { ValidationErrorCodes } from "./error-codes";
 
 const fsPromise = FS.promises;
 
@@ -16,7 +17,7 @@ export const findMetaFunctionFile = async () : Promise<string> => {
   const result = await fsPromise.readFile(filePath, "utf8")
     .catch((error) => {
       console.error(error);
-      throw Error("Could not read " + filePath);
+      throw Error(ValidationErrorCodes.V00);
     });
   
   return result;
