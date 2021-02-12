@@ -1,22 +1,30 @@
-// Find configuration File
-// -- Throw if not found at the root of the project
-
-// Check configuration file types
-// -- Throw if the type is not valid
-
 import { isMetaFunction } from "./src/is-meta-function";
 import { findMetaFunctionFile } from "./src/find-function-declaration-file";
 import { ValidationErrorCodes } from "./src/error-codes";
+import { CustomTypesValidation } from "./src/custom-types-validation";
+import { error, processing, success } from "./src/chalk-formatting";
 
 const main = () : void => {
+  console.log(processing("Starting validation of the \"meta-function.json\" file...\n"))
   findMetaFunctionFile()
     .then((result) => {
+      let objectResult;
       try {
-        const objectResult = JSON.parse(result);
-        isMetaFunction(objectResult);
+        objectResult = JSON.parse(result);
       } catch (e) {
-        throw Error(ValidationErrorCodes.V00 + " - File content is not a valid JSON")
+        throw Error(error(ValidationErrorCodes.V00 + " - File content is not a valid JSON"))
       }
+
+      isMetaFunction(objectResult);
+      new CustomTypesValidation(objectResult).execute();
+
+      console.log(success("File passed validation."));
+    })
+    .catch((error) => {
+      console.log("Could not pass file validation due to error below:");
+      console.log(error.message);
+
+      process.exit(1);
     });
 }
 

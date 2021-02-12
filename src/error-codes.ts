@@ -22,5 +22,8 @@ export enum ValidationErrorCodes {
   V20 = "V20 - Input parameter type must be a non empty string",
   V21 = "V21 - Input parameter Description must be non empty string if provided",
   V22 = "V22 - Input parameter group must be non empty string if provided",
-  V23 = "V23 - Input parameter required must be a boolean if provided - if omitted it is assumed as false."
+  V23 = "V23 - Input parameter required must be a boolean if provided - if omitted it is assumed as false",
+  V24 = "V24 - Given type does not exist, or was not provided",
+  V25 = "V25 - Configuration includes a custom type reference loop",
+  V26 = "V26 - Given value is not a know Normal Type"
 }

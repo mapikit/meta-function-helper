@@ -1,4 +1,5 @@
 import SemVer from "semver";
+import { error } from "./chalk-formatting";
 import { ValidationErrorCodes } from "./error-codes";
 import { CustomType, InputParameters, MetaFunction, OutputBranches, OutputData } from "./meta-function-type";
 
@@ -7,11 +8,11 @@ import { CustomType, InputParameters, MetaFunction, OutputBranches, OutputData }
  */
 const isValidString = (input : unknown, errorCode : ValidationErrorCodes) => {
   if (typeof input !== "string") {
-    throw errorCode;
+    throw error(errorCode);
   }
 
-  if (input.length < 0) {
-    throw errorCode;
+  if (input.length <= 0) {
+    throw error(errorCode);
   }
 };
 
@@ -23,7 +24,7 @@ export function isMetaFunction (input : object) : asserts input is MetaFunction 
   }
 
   if (SemVer.valid(metaFunctionLikeInput.version) === null) {
-    throw Error(ValidationErrorCodes.V02);
+    throw Error(error(ValidationErrorCodes.V02));
   }
 
   isValidString(metaFunctionLikeInput.description, ValidationErrorCodes.V03);
@@ -31,19 +32,19 @@ export function isMetaFunction (input : object) : asserts input is MetaFunction 
   isValidString(metaFunctionLikeInput.mainFunction, ValidationErrorCodes.V05);
 
   if (metaFunctionLikeInput.customTypes !== undefined && !Array.isArray(metaFunctionLikeInput.customTypes)) {
-    throw Error(ValidationErrorCodes.V06);
+    throw Error(error(ValidationErrorCodes.V06));
   }
 
   if (!Array.isArray(metaFunctionLikeInput.outputData)) {
-    throw Error(ValidationErrorCodes.V07);
+    throw Error(error(ValidationErrorCodes.V07));
   }
 
   if (!Array.isArray(metaFunctionLikeInput.outputBranches)) {
-    throw Error(ValidationErrorCodes.V08);
+    throw Error(error(ValidationErrorCodes.V08));
   }
 
   if (!Array.isArray(metaFunctionLikeInput.inputParameters)) {
-    throw Error(ValidationErrorCodes.V09);
+    throw Error(error(ValidationErrorCodes.V09));
   }
 
   isCustomType(metaFunctionLikeInput.customTypes);
@@ -59,7 +60,7 @@ function isCustomType (input : unknown[]) : asserts input is CustomType[] {
     isValidString(customTypeInput.name, ValidationErrorCodes.V10);
 
     if (!Array.isArray(customTypeInput.properties)) {
-      throw Error(ValidationErrorCodes.V11);
+      throw Error(error(ValidationErrorCodes.V11));
     }
 
     customTypeInput.properties.forEach((propertyData) => {
@@ -110,7 +111,7 @@ function isInputParameters (input : unknown[]) : asserts input is InputParameter
     }
 
     if (inputParameterInput.required !== undefined && typeof inputParameterInput.required !== "boolean") {
-      throw Error(ValidationErrorCodes.V23);
+      throw Error(error(ValidationErrorCodes.V23));
     }
   })
 }

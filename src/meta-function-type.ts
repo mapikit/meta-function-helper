@@ -4,11 +4,11 @@ export interface MetaFunction {
   author ?: string;
   version : string; // Must be SemVer
   inputParameters : InputParameters[];
-  outputBranches : [];
-  outputData : [];
+  outputBranches : OutputBranches[];
+  outputData : OutputData[];
   entrypoint : string;
   mainFunction : string;
-  customTypes : CustomType[]
+  customTypes : CustomType[];
 }
 
 /**

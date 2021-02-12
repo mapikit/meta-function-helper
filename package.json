@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mapikit/meta-function-helper#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "semver": "^7.3.4"
   },
   "devDependencies": {
