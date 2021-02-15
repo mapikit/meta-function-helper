@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/mapikit/meta-function-helper.git"
   },
+  "bin": {
+    "meta-function-check": "./dist/src/bin/validate-repo.js"
+  },
   "author": "mapikit",
   "license": "GPL-3.0",
   "bugs": {

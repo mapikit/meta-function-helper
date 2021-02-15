@@ -2,7 +2,10 @@ import { error, highlight } from "./chalk-formatting";
 import { ValidationErrorCodes } from "./error-codes";
 import { CustomType, MetaFunction } from "./meta-function-type";
 
-export class CustomTypesValidation {
+/**
+ * Class to validate the rules of the schema of a Meta Function json configuration.
+ */
+export class MetaCustomTypesValidation {
   private customTypesNames : string[] = [];
   private metaFunctionData : MetaFunction;
 

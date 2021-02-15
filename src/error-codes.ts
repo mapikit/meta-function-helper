@@ -1,3 +1,6 @@
+/**
+ * Error codes for validation failures
+ */
 export enum ValidationErrorCodes {
   V00 = "V00 - Could not read file",
   V01 = "V01 - Mentioned Author must be a non empty String",

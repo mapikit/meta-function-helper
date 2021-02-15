@@ -16,6 +16,11 @@ const isValidString = (input : unknown, errorCode : ValidationErrorCodes) => {
   }
 };
 
+/**
+ * Validates if the object input is a valid Meta-Function declaration object
+ * 
+ * This does not validates the rules of the object data, such as the validity of all types
+ */
 export function isMetaFunction (input : object) : asserts input is MetaFunction {
   const metaFunctionLikeInput = input as MetaFunction;
 
