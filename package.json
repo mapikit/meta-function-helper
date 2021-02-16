@@ -1,6 +1,6 @@
 {
   "name": "meta-function-helper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A helper to validate your configurations while developing a custom function for Meta-System",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

@@ -2,6 +2,7 @@ import { isMetaFunction } from "./is-meta-function";
 import { ValidationErrorCodes } from "./error-codes";
 import { MetaCustomTypesValidation } from "./custom-types-validation";
 import { error, success } from "./chalk-formatting";
+import { nameUniquenessCheck } from "./name-uniqueness-check";
 
 /** Validates the string content of a `meta-function.json` file */
 export const validateStringConfiguration = (configurationData : string) => {
@@ -14,6 +15,9 @@ export const validateStringConfiguration = (configurationData : string) => {
   }
 
   isMetaFunction(objectResult);
+  nameUniquenessCheck(objectResult.inputParameters, "inputParameters");
+  nameUniquenessCheck(objectResult.outputData, "outputData");
+  nameUniquenessCheck(objectResult.customTypes, "customTypes");
   new MetaCustomTypesValidation(objectResult).execute();
   console.log(success("File passed validation."));
 }

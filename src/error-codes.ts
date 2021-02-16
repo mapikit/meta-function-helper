@@ -28,5 +28,6 @@ export enum ValidationErrorCodes {
   V23 = "V23 - Input parameter required must be a boolean if provided - if omitted it is assumed as false",
   V24 = "V24 - Given type does not exist, or was not provided",
   V25 = "V25 - Configuration includes a custom type reference loop",
-  V26 = "V26 - Given value is not a know Normal Type"
+  V26 = "V26 - Given value is not a know Normal Type",
+  V27 = "V27 - Duplicated entity name detected - All entities must have unique names"
 }
