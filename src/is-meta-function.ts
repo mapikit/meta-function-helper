@@ -8,11 +8,11 @@ import { CustomType, InputParameters, MetaFunction, OutputBranches, OutputData }
  */
 const isValidString = (input : unknown, errorCode : ValidationErrorCodes) => {
   if (typeof input !== "string") {
-    throw error(errorCode);
+    throw Error(error(errorCode));
   }
 
   if (input.length <= 0) {
-    throw error(errorCode);
+    throw Error(error(errorCode));
   }
 };
 
@@ -89,6 +89,10 @@ function isOutputData (input : unknown[]) : asserts input is OutputData[] {
 }
 
 function isOutputBranches (input : unknown[]) : asserts input is OutputBranches[] {
+  if (input.length <= 0) {
+    throw Error(error(ValidationErrorCodes.V08));
+  }
+
   input.forEach((inputElement) => {
     const outputBranchInput = inputElement as OutputBranches;
 
