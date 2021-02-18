@@ -15,9 +15,9 @@ export interface MetaFunction {
  * It is either one of the especified strings, or it must be a
  * defined customType, referenced by `$typeName`
  */
-export type AcceptedTypes = "string" |
-  "number" | "boolean" | "date" |
-  "array.string" | "array.number" | "array.boolean" | "array.date" | string
+export type AcceptedTypes = "string" |  "number" | "boolean" | "date" |
+  "array.string" | "array.number" | "array.boolean" | "array.date" |
+  "cloudedObject" | string
 
 export interface CustomType {
   name : string;

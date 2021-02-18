@@ -47,7 +47,7 @@ export class MetaCustomTypesValidation {
 
   private validateNormalType (input : string) : void {
     const validNormalTypes = ["string", "boolean", "number", "date", "array.number",
-      "array.string", "array.boolean", "array.date"
+      "array.string", "array.boolean", "array.date", "cloudedObject"
     ];
 
     if (!validNormalTypes.includes(input)) {

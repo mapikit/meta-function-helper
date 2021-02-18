@@ -29,5 +29,6 @@ export enum ValidationErrorCodes {
   V24 = "V24 - Given type does not exist, or was not provided",
   V25 = "V25 - Configuration includes a custom type reference loop",
   V26 = "V26 - Given value is not a know Normal Type",
-  V27 = "V27 - Duplicated entity name detected - All entities must have unique names"
+  V27 = "V27 - Duplicated entity name detected - All entities must have unique names",
+  V28 = "V28 - All branches must have a corresponding data bound to them"
 }

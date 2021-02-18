@@ -1,4 +1,9 @@
 # Releases
+## 0.0.4 - Validate Branch Data & Clouded Objects
+- New validation for presence of data in every branch. Now every branch must have some data bound to it.
+- New Type : `"cloudedObject"` - for when the type is an object, but with unknown properties and keys.
+- Bugfix : Custom types properties are now also verified for their name uniqueness.
+
 ## 0.0.3 - Name Uniqueness Validation
 - Now the program validates the names of all structures in the arrays of the provided file. All of the names must be unique.
 
