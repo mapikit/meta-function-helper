@@ -1,4 +1,7 @@
 # Releases
+## 0.0.6 - Fix package.json
+- Package json was pointing the main file in the wrong folder.
+
 ## 0.0.5 - Export types
 - Now the library also exports the types for a valid `meta-function.json`.
 
