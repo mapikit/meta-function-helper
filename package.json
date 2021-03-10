@@ -1,6 +1,6 @@
 {
   "name": "meta-function-helper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A helper to validate your configurations while developing a custom function for Meta-System",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/mapikit/meta-function-helper/issues"
   },
-  "homepage": "https://github.com/mapikit/meta-function-helper#readme",
+  "homepage": "https://github.com/mapikit/meta-function-helper",
   "dependencies": {
     "chalk": "^4.1.0",
     "semver": "^7.3.4"

@@ -1,4 +1,6 @@
 # Releases
+#### 0.0.7 - No code Changes - Package.json small fix
+
 ## 0.0.6 - Fix package.json
 - Package json was pointing the main file in the wrong folder.
 
