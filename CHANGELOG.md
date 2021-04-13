@@ -1,6 +1,9 @@
 # Releases
+## 0.0.9 - Added `array.any` As A Valid Type
+- Now BOps functions may return and accept as a parameter arays of any kind.
+
 ## 0.0.8 - Added `array.cloudedObject` As A Valid Type
-- Now BOps functions may return an unknown object array
+- Now BOps functions may return an unknown object array.
 
 #### 0.0.7 - No code Changes - Package.json small fix
 
