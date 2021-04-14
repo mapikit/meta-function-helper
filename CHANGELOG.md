@@ -1,4 +1,7 @@
 # Releases
+## 0.0.10 - Added `any` As A Valid Type
+- Now BOps functions may return and accept any type as a parameter.
+
 ## 0.0.9 - Added `array.any` As A Valid Type
 - Now BOps functions may return and accept as a parameter arays of any kind.
 

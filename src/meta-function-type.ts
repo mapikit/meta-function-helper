@@ -17,7 +17,7 @@ export interface MetaFunction {
  */
 export type AcceptedTypes = "string" |  "number" | "boolean" | "date" |
   "array.string" | "array.number" | "array.boolean" | "array.date" |
-  "array.cloudedObject" | "cloudedObject" | "array.any" | string
+  "array.cloudedObject" | "cloudedObject" | "array.any" | "any" | string
 
 export interface CustomType {
   name : string;
