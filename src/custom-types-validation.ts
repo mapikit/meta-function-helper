@@ -1,6 +1,8 @@
 import { error, highlight } from "./chalk-formatting";
 import { ValidationErrorCodes } from "./error-codes";
 import { CustomType, MetaFunction } from "./meta-function-type";
+import { getAllTypesInDefinition } from "./object-definition/get-all-types-in-definition";
+import { ObjectDefinition } from "./object-definition/object-definition-type";
 
 /**
  * Class to validate the rules of the schema of a Meta Function json configuration.
@@ -20,19 +22,19 @@ export class MetaCustomTypesValidation {
   public execute () : void {
     this.metaFunctionData.customTypes.forEach((customTypeDefinition) => {
       this.checkCustomTypeLinearity(customTypeDefinition, []);
-      customTypeDefinition.properties.forEach(this.checkObjectType);
+      this.checkObjectType(customTypeDefinition.type)
     });
 
     this.metaFunctionData.inputParameters.forEach(this.checkObjectType);
     this.metaFunctionData.outputData.forEach(this.checkObjectType);
   }
 
-  private checkObjectType = (input : { type : string }) => {
-    if (this.isCustomType(input.type)) {
-      return this.validateCustomType(input.type);
+  private checkObjectType = (input : ObjectDefinition) => {
+    if (this.isCustomType(input.type.type)) {
+      return this.validateCustomType(input.type.type);
     }
 
-    this.validateNormalType(input.type);
+    this.validateNormalType(input.type.type);
   };
 
   private isCustomType (input : string) : boolean {
@@ -66,14 +68,16 @@ export class MetaCustomTypesValidation {
 
     referenceChain.push(typeToValidate.name);
 
-    typeToValidate.properties.filter((propertyDeclaration) => propertyDeclaration.type[0] === "$")
+    const types = getAllTypesInDefinition(typeToValidate.type)
+    
+    const customObjectTypes = types.filter((propertyDeclaration) => propertyDeclaration[0] === "$")
 
-    typeToValidate.properties.forEach((propertyDeclaration) => {
-      if (propertyDeclaration.type[0] === "$") {
-        this.validateCustomType(propertyDeclaration.type);
+    customObjectTypes.forEach((type) => {
+      if (type[0] === "$") {
+        this.validateCustomType(type);
 
         const referencedCustomType = this.metaFunctionData.customTypes.find((typeDefinition) =>
-          typeDefinition.name === propertyDeclaration.type.substring(1));
+          typeDefinition.name === type.substring(1));
 
         return this.checkCustomTypeLinearity(referencedCustomType, referenceChain);
       }

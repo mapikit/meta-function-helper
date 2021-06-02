@@ -1,11 +1,12 @@
+import { ObjectDefinition } from "./object-definition/object-definition-type";
+
 export interface MetaFunction {
   functionName : string;
   description : string;
   author ?: string;
   version : string; // Must be SemVer
-  inputParameters : InputParameters[];
-  outputBranches : OutputBranches[];
-  outputData : OutputData[];
+  inputParameters ?: ObjectDefinition[];
+  outputData : ObjectDefinition[];
   entrypoint : string;
   mainFunction : string;
   customTypes : CustomType[];
@@ -21,24 +22,5 @@ export type AcceptedTypes = "string" |  "number" | "boolean" | "date" |
 
 export interface CustomType {
   name : string;
-  properties : { name : string; type : AcceptedTypes }[]
-}
-
-export interface InputParameters {
-  name : string;
-  description ?: string;
-  type : AcceptedTypes;
-  required ?: boolean;
-  group ?: string;
-}
-
-export interface OutputBranches {
-  branchName : string;
-  description ?: string;
-}
-
-export interface OutputData {
-  name : string;
-  branch ?: string;
-  type : AcceptedTypes;
+  type : ObjectDefinition;
 }
