@@ -28,7 +28,12 @@ export enum ValidationErrorCodes {
   V23 = "V23 - Input parameter required must be a boolean if provided - if omitted it is assumed as false",
   V24 = "V24 - Given type does not exist, or was not provided",
   V25 = "V25 - Configuration includes a custom type reference loop",
-  V26 = "V26 - Given value is not a know Normal Type",
+  V26 = "V26 - Given value is not a know Type",
   V27 = "V27 - Duplicated entity name detected - All entities must have unique names",
-  V28 = "V28 - All branches must have a corresponding data bound to them" // Deprecated
+  V28 = "V28 - All branches must have a corresponding data bound to them", // Deprecated
+  V29 = "V29 - Input validated is not an object",
+  V30 = "V30 - Value of object should be a TypeDefinition",
+  V31 = "V31 - Property \"type\" must be a string",
+  V32 = "V32 - Property \"required\" must be a string",
+  V33 = "V33 - Property \"subtype\" must be defined for deep types (array or object)"
 }

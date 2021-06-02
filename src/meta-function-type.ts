@@ -5,8 +5,8 @@ export interface MetaFunction {
   description : string;
   author ?: string;
   version : string; // Must be SemVer
-  inputParameters ?: ObjectDefinition[];
-  outputData : ObjectDefinition[];
+  inputParameters ?: ObjectDefinition;
+  outputData : ObjectDefinition;
   entrypoint : string;
   mainFunction : string;
   customTypes : CustomType[];

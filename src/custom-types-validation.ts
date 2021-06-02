@@ -25,16 +25,19 @@ export class MetaCustomTypesValidation {
       this.checkObjectType(customTypeDefinition.type)
     });
 
-    this.metaFunctionData.inputParameters.forEach(this.checkObjectType);
-    this.metaFunctionData.outputData.forEach(this.checkObjectType);
+    this.checkObjectType(this.metaFunctionData.inputParameters)
+    this.checkObjectType(this.metaFunctionData.outputData)
   }
 
   private checkObjectType = (input : ObjectDefinition) => {
-    if (this.isCustomType(input.type.type)) {
-      return this.validateCustomType(input.type.type);
-    }
+    const typesList = Object.values(input)
+      .map((typeDefinition) => typeDefinition.type)
 
-    this.validateNormalType(input.type.type);
+    typesList.forEach((type) => {
+      if (this.isCustomType(type)) {
+        return this.validateCustomType(type);
+      }
+    })
   };
 
   private isCustomType (input : string) : boolean {
@@ -44,17 +47,6 @@ export class MetaCustomTypesValidation {
   private validateCustomType (input : string) : void {
     if (!this.customTypesNames.includes(input)) {
       throw Error(error(ValidationErrorCodes.V24) + ` - "${highlight(input)}"`);
-    }
-  }
-
-  private validateNormalType (input : string) : void {
-    const validNormalTypes = ["string", "boolean", "number", "date", "array.number",
-      "array.string", "array.boolean", "array.date", "array.cloudedObject", "cloudedObject",
-      "array.any", "any"
-    ];
-
-    if (!validNormalTypes.includes(input)) {
-      throw Error(error(ValidationErrorCodes.V26) + ` - "${highlight(input)}"`);
     }
   }
 

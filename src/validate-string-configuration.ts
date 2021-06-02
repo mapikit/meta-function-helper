@@ -15,8 +15,6 @@ export const validateStringConfiguration = (configurationData : string) => {
   }
 
   isMetaFunction(objectResult);
-  propertyUniquenessCheck(objectResult.inputParameters, "name", "inputParameters");
-  propertyUniquenessCheck(objectResult.outputData, "name", "outputData");
   propertyUniquenessCheck(objectResult.customTypes, "name", "customTypes");
 
   new MetaCustomTypesValidation(objectResult).execute();
