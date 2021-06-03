@@ -12,7 +12,7 @@ export class MetaCustomTypesValidation {
   private metaFunctionData : MetaFunction;
 
   public constructor (metaFunctionData : MetaFunction) {
-    metaFunctionData.customTypes.forEach((customType) => {
+    metaFunctionData.customTypes?.forEach((customType) => {
       this.customTypesNames.push("$" + customType.name);
     });
 
@@ -20,12 +20,15 @@ export class MetaCustomTypesValidation {
   }
 
   public execute () : void {
-    this.metaFunctionData.customTypes.forEach((customTypeDefinition) => {
+    this.metaFunctionData.customTypes?.forEach((customTypeDefinition) => {
       this.checkCustomTypeLinearity(customTypeDefinition, []);
       this.checkObjectType(customTypeDefinition.type)
     });
 
-    this.checkObjectType(this.metaFunctionData.inputParameters)
+    if (this.metaFunctionData.inputParameters !== undefined) {
+      this.checkObjectType(this.metaFunctionData.inputParameters)
+    }
+
     this.checkObjectType(this.metaFunctionData.outputData)
   }
 

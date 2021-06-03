@@ -44,10 +44,15 @@ export function isMetaFunction (input : object) : asserts input is MetaFunction 
 
   isCustomType(metaFunctionLikeInput.customTypes);
   isObjectDefinition(metaFunctionLikeInput.outputData);
-  isObjectDefinition(metaFunctionLikeInput.inputParameters);
+
+  if (metaFunctionLikeInput.inputParameters !== undefined) {
+    isObjectDefinition(metaFunctionLikeInput.inputParameters);
+  }
 }
 
-function isCustomType (input : unknown[]) : asserts input is CustomType[] {
+function isCustomType (input ?: unknown[]) : asserts input is CustomType[] {
+  if (input === undefined) return;
+
   input.forEach((inputElement) => {
     const customTypeInput = inputElement as CustomType;
 

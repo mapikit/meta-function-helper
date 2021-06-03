@@ -34,6 +34,6 @@ export enum ValidationErrorCodes {
   V29 = "V29 - Input validated is not an object",
   V30 = "V30 - Value of object should be a TypeDefinition",
   V31 = "V31 - Property \"type\" must be a string",
-  V32 = "V32 - Property \"required\" must be a string",
+  V32 = "V32 - Property \"required\" must be a boolean",
   V33 = "V33 - Property \"subtype\" must be defined for deep types (array or object)"
 }

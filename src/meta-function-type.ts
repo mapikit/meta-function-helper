@@ -9,7 +9,7 @@ export interface MetaFunction {
   outputData : ObjectDefinition;
   entrypoint : string;
   mainFunction : string;
-  customTypes : CustomType[];
+  customTypes ?: CustomType[];
 }
 
 /**

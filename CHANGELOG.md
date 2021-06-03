@@ -3,6 +3,7 @@
 **NOTE** - This is incompatible with previous versions of the library, so upgrading requires rewriting your current `meta-function.json` file.
 - MAIN CHANGE - Now type definitions are standardized throughout the whole library. No more learning to define the types for inputs, outputs, and custom types.
 - MAIN CHANGE - Removed branch definition. You no longer specify code branching. Although branching may still happens, if it is the case that you need to have multiple different outputs, type them as a type union of all the possible types your function branches out to.
+- MAIN CHANGE - Now both `inputParameters` and `customTypes` are optional properties in the `meta-function.json` file.
 
 ## 0.0.10 - Added `any` As A Valid Type
 - Now BOps functions may return and accept any type as a parameter.
