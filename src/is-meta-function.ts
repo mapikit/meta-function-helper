@@ -43,10 +43,13 @@ export function isMetaFunction (input : object) : asserts input is MetaFunction 
 
 
   isCustomType(metaFunctionLikeInput.customTypes);
-  isObjectDefinition(metaFunctionLikeInput.outputData);
 
   if (metaFunctionLikeInput.inputParameters !== undefined) {
     isObjectDefinition(metaFunctionLikeInput.inputParameters);
+  }
+
+  if (metaFunctionLikeInput.outputData !== undefined) {
+    isObjectDefinition(metaFunctionLikeInput.outputData);
   }
 }
 

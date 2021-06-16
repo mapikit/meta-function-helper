@@ -1,4 +1,10 @@
 # Releases
+
+## 0.1.1 - Added Function As a Valid Accepted Type
+This enables the creation of flow-controlling and side-effects-controlling meta-functions!
+
+- MINOR CHANGE: Now meta-functions do not need to specify an output value for them, as they may be required only as a functional dependency.
+- MAIN CHANGE: Now meta-functions may accept another functions as an input. An important aspect is that functions recieved do not share their return type, so creators of meta-functions may treat errors and assert types.
 ## 0.1.0 - Ovberhauled type definition
 **NOTE** - This is incompatible with previous versions of the library, so upgrading requires rewriting your current `meta-function.json` file.
 - MAIN CHANGE - Now type definitions are standardized throughout the whole library. No more learning to define the types for inputs, outputs, and custom types.

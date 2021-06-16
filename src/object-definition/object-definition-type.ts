@@ -5,7 +5,7 @@ export type TypeDefinition = TypeDefinitionFlat | TypeDefinitionDeep;
 export type ObjectDefinition = Record<string, TypeDefinition>;
 
 export interface TypeDefinitionFlat {
-  type : "string" |  "number" | "boolean" | "date" | "any" | "cloudedObject" | string;
+  type : "string" | "function" | "number" | "boolean" | "date" | "any" | "cloudedObject" | string;
   required ?: boolean;
 }
 
