@@ -5,7 +5,7 @@ import { error, success } from "./chalk-formatting";
 import { propertyUniquenessCheck } from "./name-uniqueness-check";
 
 /** Validates the string content of a `meta-function.json` file */
-export const validateStringConfiguration = (configurationData : string) => {
+export const validateStringConfiguration = (configurationData : string, isPackage : boolean = false) => {
   let objectResult;
 
   try {
@@ -14,7 +14,7 @@ export const validateStringConfiguration = (configurationData : string) => {
     throw Error(error(ValidationErrorCodes.V00 + " - File content is not a valid JSON"))
   }
 
-  isMetaFunction(objectResult);
+  isMetaFunction(objectResult, isPackage);
 
   if (objectResult.customTypes !== undefined) {
     propertyUniquenessCheck(objectResult.customTypes, "name", "customTypes");
@@ -22,5 +22,5 @@ export const validateStringConfiguration = (configurationData : string) => {
 
   new MetaCustomTypesValidation(objectResult).execute();
 
-  console.log(success("File passed validation."));
+  console.log(success(`"${objectResult.functionName}"` + " Function File passed validation."));
 }

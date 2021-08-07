@@ -12,15 +12,19 @@ export class MetaCustomTypesValidation {
   private metaFunctionData : MetaFunction;
 
   public constructor (metaFunctionData : MetaFunction) {
-    metaFunctionData.customTypes?.forEach((customType) => {
-      this.customTypesNames.push("$" + customType.name);
-    });
+    if (metaFunctionData.customTypes !== undefined) {
+      metaFunctionData.customTypes.forEach((customType) => {
+        this.customTypesNames.push("$" + customType.name);
+      });
+    } else {
+      metaFunctionData.customTypes = [];
+    }
 
     this.metaFunctionData = metaFunctionData;
   }
 
   public execute () : void {
-    this.metaFunctionData.customTypes?.forEach((customTypeDefinition) => {
+    this.metaFunctionData.customTypes.forEach((customTypeDefinition) => {
       this.checkCustomTypeLinearity(customTypeDefinition, []);
       this.checkObjectType(customTypeDefinition.type)
     });
@@ -29,7 +33,9 @@ export class MetaCustomTypesValidation {
       this.checkObjectType(this.metaFunctionData.inputParameters)
     }
 
-    this.checkObjectType(this.metaFunctionData.outputData)
+    if (this.metaFunctionData.outputData !== undefined) {
+      this.checkObjectType(this.metaFunctionData.outputData)
+    }
   }
 
   private checkObjectType = (input : ObjectDefinition) => {

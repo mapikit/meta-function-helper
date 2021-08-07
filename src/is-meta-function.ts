@@ -22,20 +22,25 @@ const isValidString = (input : unknown, errorCode : ValidationErrorCodes) => {
  * 
  * This does not validates the rules of the object data, such as the validity of all types
  */
-export function isMetaFunction (input : object) : asserts input is MetaFunction {
+export function isMetaFunction (input : object, isPackage : boolean = false) : asserts input is MetaFunction {
   const metaFunctionLikeInput = input as MetaFunction;
+
+  isValidString(metaFunctionLikeInput.functionName, ValidationErrorCodes.V41)
 
   if (metaFunctionLikeInput.author !== undefined) {
     isValidString(metaFunctionLikeInput.author, ValidationErrorCodes.V01);
   }
 
-  if (SemVer.valid(metaFunctionLikeInput.version) === null) {
-    throw Error(error(ValidationErrorCodes.V02));
+  if (!isPackage) {
+    if (SemVer.valid(metaFunctionLikeInput.version) === null) {
+      throw Error(error(ValidationErrorCodes.V02));
+    }
+
+    isValidString(metaFunctionLikeInput.entrypoint, ValidationErrorCodes.V04);
+    isValidString(metaFunctionLikeInput.mainFunction, ValidationErrorCodes.V05);
   }
 
   isValidString(metaFunctionLikeInput.description, ValidationErrorCodes.V03);
-  isValidString(metaFunctionLikeInput.entrypoint, ValidationErrorCodes.V04);
-  isValidString(metaFunctionLikeInput.mainFunction, ValidationErrorCodes.V05);
 
   if (metaFunctionLikeInput.customTypes !== undefined && !Array.isArray(metaFunctionLikeInput.customTypes)) {
     throw Error(error(ValidationErrorCodes.V06));

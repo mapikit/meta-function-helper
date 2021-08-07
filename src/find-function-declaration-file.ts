@@ -10,9 +10,8 @@ const fsPromise = FS.promises;
  * This function either finds the file and yields its contents as a string
  * or throws with an error
  */
-export const findMetaFunctionFile = async () : Promise<string> => {
-  const defaultFileName = "meta-function.json";
-  const filePath = Path.join(process.env.PWD, defaultFileName);
+export const findMetaDescriptionFile = async (fileName : string = "meta-function.json") : Promise<string> => {
+  const filePath = Path.join(process.env.PWD, fileName);
 
   const result = await fsPromise.readFile(filePath, "utf8")
     .catch((error) => {

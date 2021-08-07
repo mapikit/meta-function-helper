@@ -1,4 +1,8 @@
 # Releases
+## 0.2 - Packages
+This release adds support for validating packages and their functions altogether. Instructions on how to use this are in the README of the project.
+
+Alongside this, there were some bugs solved in the function validation process.
 
 ## 0.1.1 - Added Function As a Valid Accepted Type
 This enables the creation of flow-controlling and side-effects-controlling meta-functions!

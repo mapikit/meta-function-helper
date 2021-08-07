@@ -1,5 +1,7 @@
 meta-function.json
+meta-package.json
 node_modules
 tsconfig.json
 src/*
 index.ts
+/test-files/*
