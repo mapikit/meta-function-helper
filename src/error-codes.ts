@@ -43,5 +43,6 @@ export enum ValidationErrorCodes {
   V38 = "V38 - Package Function Definition is not of the expected type",
   V39 = "V39 - Could not find declared function package file",
   V40 = "V40 - Package Functions Definitions must be an array",
-  V41 = "V41 - functionName must be present in the function configuration"
+  V41 = "V41 - functionName must be present in the function configuration",
+  V42 = "V42 - Package Entrypoint must be a string"
 }

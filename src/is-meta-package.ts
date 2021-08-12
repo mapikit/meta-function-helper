@@ -26,6 +26,10 @@ export function isMetaPackage (input : unknown) : asserts input is MetaPackage {
     throw Error(error(ValidationErrorCodes.V40))
   }
 
+  if (typeof packageLikeInput.entrypoint !== "string") {
+    throw Error(error(ValidationErrorCodes.V42));
+  }
+
   packageLikeInput.functionsDefinitions.forEach((functionDefinition) => {
     const functionDefinitionType = typeof functionDefinition;
     const isNotArrayObject = functionDefinitionType === "object" && !Array.isArray(functionDefinitionType)

@@ -1,4 +1,7 @@
 # Releases
+## 0.2.1 - Packages Entrypoint
+- MINOR CHANGE: Packages now need to have a specified entrypoint to be valid.
+
 ## 0.2 - Packages
 This release adds support for validating packages and their functions altogether. Instructions on how to use this are in the README of the project.
 

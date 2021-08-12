@@ -5,5 +5,6 @@ export interface MetaPackage {
   description : string;
   author ?: string;
   version : string; // Must be SemVer
-  functionsDefinitions: Array<string | MetaFunction>
+  functionsDefinitions: Array<string | MetaFunction>,
+  entrypoint : string;
 }
