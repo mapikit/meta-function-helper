@@ -1,4 +1,7 @@
 # Releases
+## 0.2.2 - Build Package full configuration
+Now there is a function exported to build the full configuration of a package, since you can specify functions on a different file.
+
 ## 0.2.1 - Packages Entrypoint
 - MINOR CHANGE: Packages now need to have a specified entrypoint to be valid.
 

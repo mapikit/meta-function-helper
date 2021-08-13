@@ -8,3 +8,12 @@ export interface MetaPackage {
   functionsDefinitions: Array<string | MetaFunction>,
   entrypoint : string;
 }
+
+export interface BuiltMetaPackage {
+  name : string;
+  description : string;
+  author ?: string;
+  version : string; // Must be SemVer
+  functionsDefinitions: Array<MetaFunction>,
+  entrypoint : string;
+}
