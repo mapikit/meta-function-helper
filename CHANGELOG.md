@@ -1,4 +1,7 @@
 # Releases
+## 0.2.3 - Make Input Parameters and Output Data Mandatory
+- MAIN CHANGE: Now `"inputParameters"` and `"outputData"` are mandatory. This is to users of functions know if the function has no input/output explicitly.
+
 ## 0.2.2 - Build Package full configuration
 Now there is a function exported to build the full configuration of a package, since you can specify functions on a different file.
 

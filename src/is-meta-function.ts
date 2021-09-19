@@ -49,13 +49,8 @@ export function isMetaFunction (input : object, isPackage : boolean = false) : a
 
   isCustomType(metaFunctionLikeInput.customTypes);
 
-  if (metaFunctionLikeInput.inputParameters !== undefined) {
-    isObjectDefinition(metaFunctionLikeInput.inputParameters);
-  }
-
-  if (metaFunctionLikeInput.outputData !== undefined) {
-    isObjectDefinition(metaFunctionLikeInput.outputData);
-  }
+  isObjectDefinition(metaFunctionLikeInput.inputParameters);
+  isObjectDefinition(metaFunctionLikeInput.outputData);
 }
 
 function isCustomType (input ?: unknown[]) : asserts input is CustomType[] {
