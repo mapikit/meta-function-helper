@@ -1,34 +1,33 @@
 import { isMetaFunction } from "./src/is-meta-function";
 import { ValidationErrorCodes } from "./src/error-codes";
 import { MetaCustomTypesValidation } from "./src/custom-types-validation";
-import { validateStringConfiguration } from "./src/validate-string-configuration";
-import { MetaFunction, CustomType } from "./src/meta-function-type";
+import {
+  validateMetaFunctionConfiguration,
+  validateFunctionDefinitionConfiguration,
+} from "./src/validate-configuration";
+import { MetaFunction, CustomType, FunctionDefinition } from "./src/meta-function-type";
 import { BuiltMetaPackage, MetaPackage } from "./src/meta-package-type";
-import { AcceptedTypes, ObjectDefinition } from "./src/object-definition/object-definition-type";
-import { isObjectDefinition } from "./src/object-definition/is-object-definition";
-import { validatePackageStringConfiguration } from "./src/validate-package-string-configuration";
+import { validatePackageConfiguration } from "./src/validate-package-configuration";
 import { isMetaPackage } from "./src/is-meta-package";
 import { FunctionManager } from "./src/function-manager";
-import { buildFullPackageDescription } from "./src/build-full-package-description";
+import { buildAllFunctionDefinitions } from "./src/build-all-functions-definitions";
+import { getDescriptorFileContent, getClassConstructor } from "./src/get-file";
 
 export {
-  AcceptedTypes,
   MetaFunction,
-  MetaPackage,
+  FunctionDefinition,
   CustomType,
-  ObjectDefinition,
   FunctionManager,
-  BuiltMetaPackage
-}
-
-export default {
-  validateStringConfiguration,
-  validatePackageStringConfiguration,
+  MetaPackage,
+  BuiltMetaPackage,
+  validateMetaFunctionConfiguration,
+  validateFunctionDefinitionConfiguration,
+  validatePackageConfiguration,
   MetaCustomTypesValidation,
   isMetaFunction,
   isMetaPackage,
   ValidationErrorCodes,
-  isObjectDefinition,
-  buildFullPackageDescription
-}
-
+  buildAllFunctionDefinitions,
+  getDescriptorFileContent,
+  getClassConstructor,
+};

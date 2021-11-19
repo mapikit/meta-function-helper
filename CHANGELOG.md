@@ -1,4 +1,18 @@
 # Releases
+## 0.3.0 Overhaul interface and extract ObjectDefinition to a separate package
+This big release overhauls a lot of the API we had to validate and verify, while also delivering a cleaner and refactored code. Of all the changes there were a lot of things moved and renamed, and a couple of new stuff:
+
+Starting this version, this package will be published to `@meta-system/meta-function-helper` instead of just `meta-function-helper`.
+
+### NEW
+- Added a function to get a class from a js file `getClassConstructor`;
+- Added a function to get the json data from a `.json` file `getDescriptorFileContent`;
+- Added tests! :D
+
+### Changed
+- `"inputParameters"` and `"outputData"` were changed to `"input"` and `"output"` respectively. THIS IS NOT BACKWARDS COMPATIBLE.
+- Now the validation functions accepts `unknown` as the input type, instead of `string`. They were renamed accordingly.
+
 ## 0.2.3 - Make Input Parameters and Output Data Mandatory
 - MAIN CHANGE: Now `"inputParameters"` and `"outputData"` are mandatory. This is to users of functions know if the function has no input/output explicitly.
 
