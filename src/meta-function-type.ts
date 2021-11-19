@@ -9,8 +9,8 @@ export interface MetaFunction extends FunctionDefinition {
 }
 
 export interface FunctionDefinition {
-  input ?: ObjectDefinition;
-  output ?: ObjectDefinition;
+  input : ObjectDefinition;
+  output : ObjectDefinition;
   functionName : string;
   customTypes ?: CustomType[];
 }
