@@ -4,7 +4,7 @@ import { validatePackageConfiguration } from "../validate-package-configuration"
 import { logVersion } from "./log-version";
 import { validateMetaFunctionConfiguration } from "../validate-configuration";
 
-export const validatePackage = async (initialPath = "./") : Promise<void> => {
+export const validatePackage = async (initialPath = "") : Promise<void> => {
   await logVersion();
   console.log(processing("Starting validation of the \"meta-package.json\" file...\n"));
 
@@ -13,7 +13,7 @@ export const validatePackage = async (initialPath = "./") : Promise<void> => {
   await validatePackageConfiguration(fileContent, initialPath);
 };
 
-export const validateFunction = async (initialPath = "./") : Promise<void> => {
+export const validateFunction = async (initialPath = "") : Promise<void> => {
   await logVersion();
 
   console.log(processing("Starting validation of the \"meta-function.json\" file...\n"));

@@ -4,7 +4,7 @@ import { isFunctionDefinition } from "./is-function-definition";
 
 export async function buildAllFunctionDefinitions (
   definitionsAndPaths : Array<string | FunctionDefinition>,
-  workingDir = "./",
+  workingDir = "",
 ) : Promise<FunctionDefinition[]>  {
   const pathLib = await import("path");
   const [paths, definitions] = separatePathsAndDefinitions(definitionsAndPaths);
