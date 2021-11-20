@@ -1,17 +1,22 @@
 import { ValidationErrorCodes } from "./error-codes";
 
 const createError = (err : Error) : Error => {
-  return Error(ValidationErrorCodes.failedToGetFile
+  return Error(ValidationErrorCodes.failedToGetFile + " || "
     + err
     + " -- The file is probably not a valid JS or JSON file");
 };
 
-const resolveFileAndPath = async (path : string, fileNameAndFormat : string) : Promise<string> => {
+const resolveFileAndPath = async (
+  path : string,
+  fileNameAndFormat : string,
+) : Promise<string> => {
   const pathLib = await import("path");
+
   return pathLib.resolve(path, fileNameAndFormat);
 };
 
-const getFileGetterFunction = (path : string, fileNameAndFormat : string) : () => Promise<unknown> => {
+const getFileGetterFunction = (path : string, fileNameAndFormat : string)
+  : () => Promise<unknown> => {
   return async () : Promise<unknown> => {
     const fileLib = await import("fs");
     const resolvedPath = await resolveFileAndPath(path, fileNameAndFormat);
@@ -27,7 +32,8 @@ const getFileGetterFunction = (path : string, fileNameAndFormat : string) : () =
   };
 };
 
-export const getDescriptorFileContent = async (path : string, fileName : string) : Promise<unknown> => {
+export const getDescriptorFileContent = async (path : string, fileName : string)
+: Promise<unknown> => {
   const usedFileName = fileName.endsWith(".json") ? fileName : `${fileName}.json`;
   const getter = getFileGetterFunction(path, usedFileName);
   const result = await getter();
@@ -35,7 +41,8 @@ export const getDescriptorFileContent = async (path : string, fileName : string)
   return result as unknown;
 };
 
-export const getClassConstructor = async (path : string, fileName : string, mainExport : string) : Promise<unknown> => {
+export const getClassConstructor = async (path : string, fileName : string, mainExport : string)
+: Promise<unknown> => {
   const usedFileName = fileName.endsWith(".js") ? fileName : `${fileName}.js`;
   const getter = getFileGetterFunction(path, usedFileName);
   const classFile = await getter();

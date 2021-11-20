@@ -4,12 +4,13 @@ import { ValidateMetaPackageFunctionDefinition } from "./validate-meta-package-f
 import { buildAllFunctionDefinitions } from "./build-all-functions-definitions";
 
 /** Validates the content of a `meta-package.json` file */
-export const validatePackageConfiguration = async (configurationData : unknown) : Promise<void> => {
+export const validatePackageConfiguration = async (configurationData : unknown, workingDir = "./")
+: Promise<void> => {
   isMetaPackage(configurationData);
 
   const builtPackage = {
     ...configurationData,
-    functionsDefinitions: await buildAllFunctionDefinitions(configurationData.functionsDefinitions),
+    functionsDefinitions: await buildAllFunctionDefinitions(configurationData.functionsDefinitions, workingDir),
   };
 
   await new ValidateMetaPackageFunctionDefinition(builtPackage)

@@ -2,12 +2,15 @@ import { FunctionDefinition } from "./meta-function-type";
 import { getDescriptorFileContent } from "./get-file";
 import { isFunctionDefinition } from "./is-function-definition";
 
-export async function buildAllFunctionDefinitions (definitionsAndPaths : Array<string | FunctionDefinition>)
-  : Promise<FunctionDefinition[]>  {
+export async function buildAllFunctionDefinitions (
+  definitionsAndPaths : Array<string | FunctionDefinition>,
+  workingDir = "./",
+) : Promise<FunctionDefinition[]>  {
+  const pathLib = await import("path");
   const [paths, definitions] = separatePathsAndDefinitions(definitionsAndPaths);
 
   for (const path of paths) {
-    const content = await getFunctionDefinitionFromPath(path);
+    const content = await getFunctionDefinitionFromPath(pathLib.resolve(workingDir, path));
     definitions.push(content);
   }
 
@@ -33,8 +36,10 @@ const separatePathsAndDefinitions = (definitionsAndPaths : Array<string | Functi
 
 // Exported so we can test it
 export const getFunctionDefinitionFromPath = async (path : string) : Promise<FunctionDefinition> => {
-  const fileName = path.slice(path.lastIndexOf("/") + 1);
-  const filePath = path.slice(0, path.lastIndexOf("/") + 1);
+  const pathLib = await import("path");
+  const parsedPath = pathLib.parse(path);
+  const fileName = parsedPath.name + parsedPath.ext;
+  const filePath = parsedPath.dir;
 
   const fileContent = await getDescriptorFileContent(filePath, fileName);
 

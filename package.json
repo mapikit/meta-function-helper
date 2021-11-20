@@ -8,7 +8,7 @@
     "build-run": "npx tsc && node ./dist/src/bin/validate-repo.js",
     "build-run-package": "npx tsc && node ./dist/src/bin/validate-package.js",
     "lint": "eslint --max-warnings 0 './*{(test),(src)}/**/*.{ts,js}'",
-    "test": "mocha --exit"
+    "test": "mocha --full-trace"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/mapikit/meta-function-helper",
   "dependencies": {
-    "@meta-system/object-definition": "^1.0.5",
+    "@meta-system/object-definition": "^1.0.6",
     "chalk": "^4.1.0",
     "eslint": "^8.2.0",
     "eslint-plugin-import": "^2.25.3",

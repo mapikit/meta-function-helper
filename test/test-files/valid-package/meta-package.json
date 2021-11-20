@@ -1,0 +1,15 @@
+{
+  "name": "bodia",
+  "version": "1.0.0",
+  "description": "a test for the package validations",
+  "functionsDefinitions": [
+    "./a-folder/meta-function-test-file.json",
+    {
+      "functionName": "test2",
+      "description": "function tests inside",
+      "input": {},
+      "output": {}
+    }
+  ],
+  "entrypoint": "./"
+}

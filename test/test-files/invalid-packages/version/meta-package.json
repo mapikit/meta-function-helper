@@ -1,0 +1,8 @@
+{
+  "name": "aaaaaaaaa",
+  "description": "hello",
+  "author": "mapikit",
+  "version": "abcd",
+  "functionsDefinitions": [],
+  "entrypoint": "./index.js"
+}
