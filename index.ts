@@ -12,6 +12,7 @@ import { isMetaPackage } from "./src/is-meta-package";
 import { FunctionManager } from "./src/function-manager";
 import { buildAllFunctionDefinitions } from "./src/build-all-functions-definitions";
 import { getDescriptorFileContent, getClassConstructor } from "./src/get-file";
+import { isFunctionDefinition } from "./src/is-function-definition";
 
 export {
   MetaFunction,
@@ -25,6 +26,7 @@ export {
   validatePackageConfiguration,
   MetaCustomTypesValidation,
   isMetaFunction,
+  isFunctionDefinition,
   isMetaPackage,
   ValidationErrorCodes,
   buildAllFunctionDefinitions,
