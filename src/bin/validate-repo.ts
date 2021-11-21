@@ -1,26 +1,10 @@
 #!/usr/bin/env node
 
-import { findMetaDescriptionFile } from "../find-function-declaration-file";
-import { processing } from "../chalk-formatting";
-import { validateStringConfiguration } from "../validate-string-configuration";
-const packageFile = require("../../../package.json");
+import { errorExit } from "./error-exit";
+import { validateFunction } from "./validators";
 
-const main = () : void => {
-  if (process.argv.includes("-v")) {
-    console.log("Meta-Function-Helper Version " + packageFile.version);
-    return;
-  }
+const main = async () : Promise<void> => {
+  await validateFunction();
+};
 
-  console.log(processing("Starting validation of the \"meta-function.json\" file...\n"))
-  findMetaDescriptionFile()
-    .then(validateStringConfiguration)
-    .catch((error) => {
-      console.log("Could not pass file validation due to error below:");
-      console.log(error.message);
-      console.error(error)
-
-      process.exit(1);
-    });
-}
-
-main();
+main().catch(errorExit);

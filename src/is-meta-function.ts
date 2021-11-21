@@ -1,65 +1,34 @@
 import SemVer from "semver";
 import { error } from "./chalk-formatting";
 import { ValidationErrorCodes } from "./error-codes";
-import { CustomType, MetaFunction } from "./meta-function-type";
-import { isObjectDefinition } from "./object-definition/is-object-definition";
+import { MetaFunction } from "./meta-function-type";
+import { isFunctionDefinition } from "./is-function-definition";
+import { isValidString } from "./validation-helpers/is-valid-string";
 
 /**
- * Validates if input is a string with length > 0
+ * Validates if the unknown input is a valid Meta-Function declaration object
  */
-const isValidString = (input : unknown, errorCode : ValidationErrorCodes) => {
-  if (typeof input !== "string") {
-    throw Error(error(errorCode));
+// eslint-disable-next-line max-lines-per-function
+export function isMetaFunction (input : unknown) : asserts input is MetaFunction {
+  if (typeof input !== "object") {
+    throw Error(error(ValidationErrorCodes.metaFunctionNotAnObject));
   }
 
-  if (input.length <= 0) {
-    throw Error(error(errorCode));
-  }
-};
-
-/**
- * Validates if the object input is a valid Meta-Function declaration object
- * 
- * This does not validates the rules of the object data, such as the validity of all types
- */
-export function isMetaFunction (input : object, isPackage : boolean = false) : asserts input is MetaFunction {
   const metaFunctionLikeInput = input as MetaFunction;
 
-  isValidString(metaFunctionLikeInput.functionName, ValidationErrorCodes.V41)
-
   if (metaFunctionLikeInput.author !== undefined) {
-    isValidString(metaFunctionLikeInput.author, ValidationErrorCodes.V01);
+    isValidString(metaFunctionLikeInput.author, ValidationErrorCodes.mentionedAuthorNotValidString);
   }
 
-  if (!isPackage) {
-    if (SemVer.valid(metaFunctionLikeInput.version) === null) {
-      throw Error(error(ValidationErrorCodes.V02));
-    }
-
-    isValidString(metaFunctionLikeInput.entrypoint, ValidationErrorCodes.V04);
-    isValidString(metaFunctionLikeInput.mainFunction, ValidationErrorCodes.V05);
+  if (SemVer.valid(metaFunctionLikeInput.version) === null) {
+    throw Error(error(ValidationErrorCodes.versionNotSemVerString));
   }
 
-  isValidString(metaFunctionLikeInput.description, ValidationErrorCodes.V03);
+  isValidString(metaFunctionLikeInput.entrypoint, ValidationErrorCodes.missingEntrypoint);
+  isValidString(metaFunctionLikeInput.mainFunction, ValidationErrorCodes.missingMainFunction);
 
-  if (metaFunctionLikeInput.customTypes !== undefined && !Array.isArray(metaFunctionLikeInput.customTypes)) {
-    throw Error(error(ValidationErrorCodes.V06));
-  }
+  isValidString(metaFunctionLikeInput.description, ValidationErrorCodes.missingDescription);
 
-
-  isCustomType(metaFunctionLikeInput.customTypes);
-
-  isObjectDefinition(metaFunctionLikeInput.inputParameters);
-  isObjectDefinition(metaFunctionLikeInput.outputData);
-}
-
-function isCustomType (input ?: unknown[]) : asserts input is CustomType[] {
-  if (input === undefined) return;
-
-  input.forEach((inputElement) => {
-    const customTypeInput = inputElement as CustomType;
-
-    isValidString(customTypeInput.name, ValidationErrorCodes.V10);
-    isObjectDefinition(customTypeInput.type);
-  })
+  // MetaFunction extends Function definition
+  isFunctionDefinition(input);
 }

@@ -1,14 +1,17 @@
-import { ObjectDefinition } from "./object-definition/object-definition-type";
+import { ObjectDefinition } from "@meta-system/object-definition";
 
-export interface MetaFunction {
-  functionName : string;
+export interface MetaFunction extends FunctionDefinition {
   description : string;
   author ?: string;
   version : string; // Must be SemVer
-  inputParameters ?: ObjectDefinition;
-  outputData ?: ObjectDefinition;
   entrypoint : string;
   mainFunction : string;
+}
+
+export interface FunctionDefinition {
+  input : ObjectDefinition;
+  output : ObjectDefinition;
+  functionName : string;
   customTypes ?: CustomType[];
 }
 
