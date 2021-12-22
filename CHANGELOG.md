@@ -1,4 +1,7 @@
 # Releases
+## 0.3.2 Small Bugfix
+Fixed inability to find file if the entrypoint is also a path.
+
 ## 0.3.0 Overhaul interface and extract ObjectDefinition to a separate package
 This big release overhauls a lot of the API we had to validate and verify, while also delivering a cleaner and refactored code. Of all the changes there were a lot of things moved and renamed, and a couple of new stuff:
 
