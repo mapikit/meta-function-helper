@@ -45,11 +45,13 @@ export const getDescriptorFileContent = async (path : string, fileName : string)
   return result as unknown;
 };
 
-export const getClassConstructor = async (path : string, fileName : string, mainExport : string)
+export const getClassConstructor = async (path : string, fileName : string, mainExport ?: string)
 : Promise<unknown> => {
   const usedFileName = fileName.endsWith(".js") ? fileName : `${fileName}.js`;
   const getter = getFileGetterFunction(path, usedFileName);
   const classFile = await getter();
+
+  if (mainExport === undefined) return classFile;
 
   return classFile[mainExport];
 };

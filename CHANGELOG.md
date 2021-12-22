@@ -1,4 +1,5 @@
 # Releases
+## 0.3.3 Added getClassConstructor capabilities without mainExport
 ## 0.3.2 Small Bugfix
 Fixed inability to find file if the entrypoint is also a path.
 
