@@ -3,7 +3,7 @@ import { isMetaPackage } from "./is-meta-package";
 import { ValidateMetaPackageFunctionDefinition } from "./validate-meta-package-function-definition";
 import { buildAllFunctionDefinitions } from "./build-all-functions-definitions";
 import { readFileSync } from "fs";
-import { resolve } from "path"
+import { resolve } from "path";
 import { ValidationErrorCodes } from "./error-codes";
 
 /** Validates the content of a `meta-package.json` file */

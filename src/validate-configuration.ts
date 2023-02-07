@@ -19,7 +19,9 @@ export const validateMetaFunctionConfiguration = (configurationData : unknown, w
 
   const packageText = readFileSync(`${resolve(workingDir, "package.json")}`).toString();
   const packageJson = JSON.parse(packageText);
-  if(configurationData.version && configurationData.version !== packageJson["version"]) throw Error(error(ValidationErrorCodes.versionMismatch))
+  if(configurationData.version && configurationData.version !== packageJson["version"]) {
+    throw Error(error(ValidationErrorCodes.versionMismatch));
+  }
 
   validateTypes(configurationData);
 };
