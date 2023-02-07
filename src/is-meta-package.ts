@@ -17,7 +17,7 @@ export function isMetaPackage (input : unknown) : asserts input is MetaPackage {
   isValidString(packageLikeInput.description, ValidationErrorCodes.packageDescriptionNotValidString);
   isValidString(packageLikeInput.entrypoint, ValidationErrorCodes.packageEntrypointNotValidString);
 
-  if (SemVer.valid(packageLikeInput.version) === null) {
+  if (packageLikeInput.version !== undefined && SemVer.valid(packageLikeInput.version) === null) {
     throw Error(error(ValidationErrorCodes.packageVersionNotSemVer));
   }
 

@@ -20,7 +20,7 @@ export function isMetaFunction (input : unknown) : asserts input is MetaFunction
     isValidString(metaFunctionLikeInput.author, ValidationErrorCodes.mentionedAuthorNotValidString);
   }
 
-  if (SemVer.valid(metaFunctionLikeInput.version) === null) {
+  if (metaFunctionLikeInput.version !== undefined && SemVer.valid(metaFunctionLikeInput.version) === null) {
     throw Error(error(ValidationErrorCodes.versionNotSemVerString));
   }
 

@@ -2,6 +2,7 @@
  * Error codes for validation failures
  */
 export enum ValidationErrorCodes {
+  versionMismatch = "Version mismatch between meta-config and package.json",
   failedToGetFile = "Could not read requested file",
   mentionedAuthorNotValidString = "Mentioned Author must be a non empty String",
   versionNotSemVerString = "Function Version is not a valid SemVer",

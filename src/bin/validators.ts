@@ -20,5 +20,5 @@ export const validateFunction = async (initialPath = "") : Promise<void> => {
 
   const fileContent = await getDescriptorFileContent(initialPath, "meta-function.json");
 
-  validateMetaFunctionConfiguration(fileContent);
+  validateMetaFunctionConfiguration(fileContent, initialPath);
 };
