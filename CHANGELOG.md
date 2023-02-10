@@ -1,4 +1,6 @@
 # Releases
+## 0.4.1 Fixes caching of imported packages to allow validation retries
+## 0.4.0 Now checks if meta-package.json version matches package.json
 ## 0.3.4 Bump Object Definition Version
 ## 0.3.3 Added getClassConstructor capabilities without mainExport
 ## 0.3.2 Small Bugfix

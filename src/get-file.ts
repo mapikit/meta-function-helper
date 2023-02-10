@@ -1,3 +1,4 @@
+import { ymport } from "./dynamic-import";
 import { ValidationErrorCodes } from "./error-codes";
 
 const createError = (err : Error) : Error => {
@@ -25,7 +26,7 @@ const getFileGetterFunction = (path : string, fileNameAndFormat : string)
     const isJs = fileNameAndFormat.endsWith(".js") || fileNameAndFormat.endsWith(".json");
 
     if (isJs) {
-      const importedData = await import(resolvedPath)
+      const importedData = await ymport(resolvedPath)
         .catch((err : Error) => { throw createError(err); });
       return importedData;
     }
