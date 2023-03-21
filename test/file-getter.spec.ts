@@ -1,4 +1,4 @@
-import { getClassConstructor, getDescriptorFileContent } from "../src/get-file";
+import { getClassConstructor, getDescriptorFileContent } from "../src/get-file.js";
 import { expect } from "chai";
 
 describe("File Getters", () => {
@@ -7,9 +7,11 @@ describe("File Getters", () => {
 
   it("Json Configuration Getter - gets file content properly", async () => {
     const result = await getDescriptorFileContent(testFilesLocation, "meta-function");
-    const fileContent = await import("./test-files/meta-function.json");
+    // TS is just mad, tests are meant to be run in Node, so ignore this. 
+    // @ts-ignore 
+    const fileContent = await import("./test-files/meta-function.json", { assert: { type: "json" } });
 
-    expect(result).to.be.deep.eq(fileContent);
+    expect(result).to.be.deep.eq(fileContent.default);
   });
 
   it("Class Getter - Gets the correct class (js format specified)", async () => {

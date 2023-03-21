@@ -1,6 +1,6 @@
-import { isFunctionDefinition } from "./is-function-definition";
-import { BuiltMetaPackage } from "./meta-package-type";
-import { validateFunctionDefinitionConfiguration } from "./validate-configuration";
+import { isFunctionDefinition } from "./is-function-definition.js";
+import { BuiltMetaPackage } from "./meta-package-type.js";
+import { validateFunctionDefinitionConfiguration } from "./validate-configuration.js";
 
 export class ValidateMetaPackageFunctionDefinition {
   public constructor (

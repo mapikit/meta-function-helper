@@ -5,3 +5,7 @@ tsconfig.json
 src/*
 index.ts
 /test-files/*
+/test/
+.eslintrc.js
+.mocharc.json
+.gitignore

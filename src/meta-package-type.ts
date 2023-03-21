@@ -1,4 +1,4 @@
-import { FunctionDefinition } from "./meta-function-type";
+import { FunctionDefinition } from "./meta-function-type.js";
 
 export interface MetaPackage {
   name : string;

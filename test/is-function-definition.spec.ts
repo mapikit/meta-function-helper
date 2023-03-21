@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { isFunctionDefinition } from "../src/is-function-definition";
-import { testThrow } from "./helpers/test-throw";
+import { isFunctionDefinition } from "../src/is-function-definition.js";
+import { testThrow } from "./helpers/test-throw.js";
 
 describe("isFunctionDefinition Tests", () => {
   it("Passes validation for a correclty formatted functionDefinition", () => {

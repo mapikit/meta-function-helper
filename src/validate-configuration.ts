@@ -1,12 +1,9 @@
-import { isMetaFunction } from "./is-meta-function";
-import { MetaCustomTypesValidation } from "./custom-types-validation";
-import { error, success } from "./chalk-formatting";
-import { propertyUniquenessCheck } from "./name-uniqueness-check";
-import { isFunctionDefinition } from "./is-function-definition";
-import { FunctionDefinition } from "./meta-function-type";
-import { readFileSync } from "fs";
-import { resolve } from "path";
-import { ValidationErrorCodes } from "./error-codes";
+import { isMetaFunction } from "./is-meta-function.js";
+import { MetaCustomTypesValidation } from "./custom-types-validation.js";
+import { success } from "./chalk-formatting.js";
+import { propertyUniquenessCheck } from "./name-uniqueness-check.js";
+import { isFunctionDefinition } from "./is-function-definition.js";
+import { FunctionDefinition } from "./meta-function-type.js";
 
 export const validateFunctionDefinitionConfiguration = (configurationData : unknown) : void => {
   isFunctionDefinition(configurationData);
@@ -14,15 +11,8 @@ export const validateFunctionDefinitionConfiguration = (configurationData : unkn
 };
 
 /** Validates the content of a `meta-function.json` file */
-export const validateMetaFunctionConfiguration = (configurationData : unknown, workingDir = "") : void => {
+export const validateMetaFunctionConfiguration = (configurationData : unknown) : void => {
   isMetaFunction(configurationData);
-
-  const packageText = readFileSync(`${resolve(workingDir, "package.json")}`).toString();
-  const packageJson = JSON.parse(packageText);
-  if(configurationData.version && configurationData.version !== packageJson["version"]) {
-    throw Error(error(ValidationErrorCodes.versionMismatch));
-  }
-
   validateTypes(configurationData);
 };
 

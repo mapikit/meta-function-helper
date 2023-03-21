@@ -1,5 +1,5 @@
-import { ValidationErrorCodes } from "../error-codes";
-import { error } from "../chalk-formatting";
+import { ValidationErrorCodes } from "../error-codes.js";
+import { error } from "../chalk-formatting.js";
 
 /**
  * Validates if input is a string with length > 0

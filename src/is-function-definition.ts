@@ -1,8 +1,8 @@
-import { error } from "./chalk-formatting";
-import { ValidationErrorCodes } from "./error-codes";
-import { CustomType, FunctionDefinition } from "./meta-function-type";
+import { error } from "./chalk-formatting.js";
+import { ValidationErrorCodes } from "./error-codes.js";
+import { CustomType, FunctionDefinition } from "./meta-function-type.js";
 import { isObjectDefinition, ObjectDefinition } from "@meta-system/object-definition";
-import { isValidString } from "./validation-helpers/is-valid-string";
+import { isValidString } from "./validation-helpers/is-valid-string.js";
 
 /**
  * Validates if the unknown input is a valid Function Definition object

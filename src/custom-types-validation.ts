@@ -1,7 +1,7 @@
 import { getAllTypesInDefinition, ObjectDefinition } from "@meta-system/object-definition";
-import { error, highlight } from "./chalk-formatting";
-import { ValidationErrorCodes } from "./error-codes";
-import { CustomType, FunctionDefinition } from "./meta-function-type";
+import { error, highlight } from "./chalk-formatting.js";
+import { ValidationErrorCodes } from "./error-codes.js";
+import { CustomType, FunctionDefinition } from "./meta-function-type.js";
 
 /**
  * Class to validate the rules of the schema of a Meta Function json configuration.

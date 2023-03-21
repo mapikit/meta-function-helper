@@ -1,9 +1,9 @@
 import SemVer from "semver";
-import { error } from "./chalk-formatting";
-import { ValidationErrorCodes } from "./error-codes";
-import { MetaFunction } from "./meta-function-type";
-import { isFunctionDefinition } from "./is-function-definition";
-import { isValidString } from "./validation-helpers/is-valid-string";
+import { error } from "./chalk-formatting.js";
+import { ValidationErrorCodes } from "./error-codes.js";
+import { MetaFunction } from "./meta-function-type.js";
+import { isFunctionDefinition } from "./is-function-definition.js";
+import { isValidString } from "./validation-helpers/is-valid-string.js";
 
 /**
  * Validates if the unknown input is a valid Meta-Function declaration object

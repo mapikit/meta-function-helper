@@ -1,16 +1,17 @@
-export async function ymport (path : string) : Promise<any> {
-  return new Promise((resolve, reject) => {
-    import(path)
-      .then(res => {
-        clearCache(path);
-        resolve(res);
-      }).catch(reject);
-  });
-}
+export async function cacheFixedImport (path : string) : Promise<unknown> {
+  // checks if it is running on NodeJS
+  if (process.version) {
+    let result;
 
-function clearCache (modulePath : string) : void {
-  require.cache[modulePath].loaded = false;
-  require.cache[modulePath]?.children.forEach(child => { if(child.loaded) clearCache(child.filename); });
+    if (path.endsWith(".json")) {
+      const fs = await import("fs/promises");
+      result = JSON.parse((await fs.readFile(path)).toString());
+    } else {
+      result = await import(path);
+    }
 
-  delete require.cache[modulePath];
+    return result;
+  }
+
+  return import(path);
 }

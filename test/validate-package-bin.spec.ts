@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { validatePackage } from "../src/bin/validators";
-import { asyncTestThrow } from "./helpers/test-throw";
+import { validatePackage } from "../src/bin/validators.js";
+import { asyncTestThrow } from "./helpers/test-throw.js";
 
 describe("Validate Package - Bin", () => {
   const validPackagePath = "./test/test-files/valid-package/";

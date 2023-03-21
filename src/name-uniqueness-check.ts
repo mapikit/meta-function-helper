@@ -1,5 +1,5 @@
-import { error, highlight } from "./chalk-formatting";
-import { ValidationErrorCodes } from "./error-codes";
+import { error, highlight } from "./chalk-formatting.js";
+import { ValidationErrorCodes } from "./error-codes.js";
 
 /**
  * Checks if all provided Elements have a unique property

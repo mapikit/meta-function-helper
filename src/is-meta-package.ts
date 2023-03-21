@@ -1,9 +1,9 @@
 import SemVer from "semver";
-import { error } from "./chalk-formatting";
-import { ValidationErrorCodes } from "./error-codes";
-import { isFunctionDefinition } from "./is-function-definition";
-import { MetaPackage } from "./meta-package-type";
-import { isValidString } from "./validation-helpers/is-valid-string";
+import { error } from "./chalk-formatting.js";
+import { ValidationErrorCodes } from "./error-codes.js";
+import { isFunctionDefinition } from "./is-function-definition.js";
+import { MetaPackage } from "./meta-package-type.js";
+import { isValidString } from "./validation-helpers/is-valid-string.js";
 
 // eslint-disable-next-line max-lines-per-function
 export function isMetaPackage (input : unknown) : asserts input is MetaPackage {

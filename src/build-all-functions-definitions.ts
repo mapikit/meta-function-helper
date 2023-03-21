@@ -1,6 +1,6 @@
-import { FunctionDefinition } from "./meta-function-type";
-import { getDescriptorFileContent } from "./get-file";
-import { isFunctionDefinition } from "./is-function-definition";
+import { FunctionDefinition } from "./meta-function-type.js";
+import { getDescriptorFileContent } from "./get-file.js";
+import { isFunctionDefinition } from "./is-function-definition.js";
 
 export async function buildAllFunctionDefinitions (
   definitionsAndPaths : Array<string | FunctionDefinition>,

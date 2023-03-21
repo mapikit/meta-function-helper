@@ -1,10 +1,10 @@
-import { ymport } from "./dynamic-import";
-import { ValidationErrorCodes } from "./error-codes";
+import { cacheFixedImport } from "./dynamic-import.js";
+import { ValidationErrorCodes } from "./error-codes.js";
 
 const createError = (err : Error) : Error => {
   return Error(ValidationErrorCodes.failedToGetFile + " || "
     + err
-    + " -- The file is probably not a valid JS or JSON file");
+    + " -- The file is not a valid JS or JSON file, or another error within the imported module has happened.");
 };
 
 const resolveFileAndPath = async (
@@ -26,7 +26,7 @@ const getFileGetterFunction = (path : string, fileNameAndFormat : string)
     const isJs = fileNameAndFormat.endsWith(".js") || fileNameAndFormat.endsWith(".json");
 
     if (isJs) {
-      const importedData = await ymport(resolvedPath)
+      const importedData = await cacheFixedImport(resolvedPath)
         .catch((err : Error) => { throw createError(err); });
       return importedData;
     }

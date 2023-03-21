@@ -1,8 +1,8 @@
-import { getDescriptorFileContent } from "../get-file";
-import { processing } from "../chalk-formatting";
-import { validatePackageConfiguration } from "../validate-package-configuration";
-import { logVersion } from "./log-version";
-import { validateMetaFunctionConfiguration } from "../validate-configuration";
+import { getDescriptorFileContent } from "../get-file.js";
+import { processing } from "../chalk-formatting.js";
+import { validatePackageConfiguration } from "../validate-package-configuration.js";
+import { logVersion } from "./log-version.js";
+import { validateMetaFunctionConfiguration } from "../validate-configuration.js";
 
 export const validatePackage = async (initialPath = "") : Promise<void> => {
   await logVersion();
@@ -20,5 +20,5 @@ export const validateFunction = async (initialPath = "") : Promise<void> => {
 
   const fileContent = await getDescriptorFileContent(initialPath, "meta-function.json");
 
-  validateMetaFunctionConfiguration(fileContent, initialPath);
+  validateMetaFunctionConfiguration(fileContent);
 };
