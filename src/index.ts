@@ -36,3 +36,17 @@ export type {
   MetaPackage,
   BuiltMetaPackage,
 };
+
+export default {
+  validateMetaFunctionConfiguration,
+  validateFunctionDefinitionConfiguration,
+  validatePackageConfiguration,
+  MetaCustomTypesValidation,
+  isMetaFunction,
+  isFunctionDefinition,
+  isMetaPackage,
+  ValidationErrorCodes,
+  buildAllFunctionDefinitions,
+  getDescriptorFileContent,
+  getClassConstructor,
+};
