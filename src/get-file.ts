@@ -19,11 +19,15 @@ const resolveFileAndPath = async (
   return pathLib.resolve(path, parsedFileNameAndFormat);
 };
 
+// eslint-disable-next-line max-lines-per-function
 const getFileGetterFunction = (path : string, fileNameAndFormat : string)
   : () => Promise<unknown> => {
   return async () : Promise<unknown> => {
     const resolvedPath = await resolveFileAndPath(path, fileNameAndFormat);
-    const isJs = fileNameAndFormat.endsWith(".js") || fileNameAndFormat.endsWith(".json");
+    const isJs = fileNameAndFormat.endsWith(".js")
+      || fileNameAndFormat.endsWith(".json")
+      || fileNameAndFormat.endsWith(".cjs")
+      || fileNameAndFormat.endsWith(".mjs");
 
     if (isJs) {
       const importedData = await cacheFixedImport(resolvedPath)
@@ -48,8 +52,7 @@ export const getDescriptorFileContent = async (path : string, fileName : string)
 
 export const getClassConstructor = async (path : string, fileName : string, mainExport ?: string)
 : Promise<unknown> => {
-  const usedFileName = fileName.endsWith(".js") ? fileName : `${fileName}.js`;
-  const getter = getFileGetterFunction(path, usedFileName);
+  const getter = getFileGetterFunction(path, fileName);
   const classFile = await getter();
 
   if (mainExport === undefined) return classFile;

@@ -1,4 +1,7 @@
 # Releases
+## 0.4.3 Bugfix
+Now we no longer add ".js" at the end of the class getter name. This improves compatibility with `.cjs` and `.mjs` interop, but now the user should remember to specify the format all the times.
+
 ## 0.4.2 Build using ESModules instead of CommonJs
 ## 0.4.1 Fixes caching of imported packages to allow validation retries
 ## 0.4.0 Now checks if meta-package.json version matches package.json
