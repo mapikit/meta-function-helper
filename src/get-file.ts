@@ -57,5 +57,5 @@ export const getClassConstructor = async (path : string, fileName : string, main
 
   if (mainExport === undefined) return classFile;
 
-  return classFile[mainExport];
+  return (classFile[mainExport] ?? classFile["default"][mainExport]);
 };

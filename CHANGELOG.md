@@ -1,4 +1,6 @@
 # Releases
+## 0.4.4 Clever Class Import Attempt
+Changes the class importer to attempt to also import from "default" when named import is not defined.
 ## 0.4.3 Bugfix
 Now we no longer add ".js" at the end of the class getter name. This improves compatibility with `.cjs` and `.mjs` interop, but now the user should remember to specify the format all the times.
 
