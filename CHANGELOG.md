@@ -1,4 +1,5 @@
 # Releases
+## 0.4.6 Fixed absolute import on Windows
 ## 0.4.5 Export Default as well
 ## 0.4.4 Clever Class Import Attempt
 Changes the class importer to attempt to also import from "default" when named import is not defined.

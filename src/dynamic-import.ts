@@ -7,7 +7,9 @@ export async function cacheFixedImport (path : string) : Promise<unknown> {
       const fs = await import("fs/promises");
       result = JSON.parse((await fs.readFile(path)).toString());
     } else {
-      result = await import(path);
+      const { pathToFileURL } = await import("node:url");
+      const fileUrl = pathToFileURL(path);
+      result = await import(fileUrl.href);
     }
 
     return result;
